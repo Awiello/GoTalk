@@ -1,5 +1,6 @@
 package com.furiouskitten.amiel.gotalk
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -33,7 +34,8 @@ class MainActivity : AppCompatActivity() {
 
 
     fun loginButtonOnClicked(view: View){
-
+        var loginIntent = Intent(this,LoginActivity::class.java)
+        startActivity(loginIntent)
     }
 
    fun addChannelClicked(view: View){
