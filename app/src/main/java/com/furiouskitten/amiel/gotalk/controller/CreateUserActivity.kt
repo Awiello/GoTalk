@@ -1,9 +1,10 @@
-package com.furiouskitten.amiel.gotalk
+package com.furiouskitten.amiel.gotalk.controller
 
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.furiouskitten.amiel.gotalk.R
 import kotlinx.android.synthetic.main.activity_create_user.*
 import kotlin.random.Random
 
@@ -38,6 +39,7 @@ class CreateUserActivity : AppCompatActivity() {
         val r = random.nextInt(255)
         val g = random.nextInt(255)
         val b = random.nextInt(255)
+
 
         createAvatarImageView.setBackgroundColor(Color.rgb(r,g,b))
         val savedRValue = r.toDouble() / 255
