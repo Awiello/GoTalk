@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.furiouskitten.amiel.gotalk.R
+import com.furiouskitten.amiel.gotalk.services.AuthService
 import kotlinx.android.synthetic.main.activity_create_user.*
 import kotlin.random.Random
 
@@ -50,7 +51,12 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun createUserButtonClicked(view: View) {
+        AuthService.registerUser(this,"awiello@j.com","123456"){ complete ->
+            if(complete){
 
+            }
+
+        }
     }
 
 }
