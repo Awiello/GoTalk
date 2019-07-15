@@ -4,8 +4,10 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.furiouskitten.amiel.gotalk.R
 import com.furiouskitten.amiel.gotalk.services.AuthService
+import com.furiouskitten.amiel.gotalk.services.UserDataService
 import kotlinx.android.synthetic.main.activity_create_user.*
 import kotlin.random.Random
 
@@ -51,12 +53,26 @@ class CreateUserActivity : AppCompatActivity() {
     }
 
     fun createUserButtonClicked(view: View) {
-        AuthService.registerUser(this,"awiello@j.com","123456"){ complete ->
-            if(complete){
 
+        val eMail = createEmailText.text.toString()
+        val passWord = createPasswordText.text.toString()
+        val userName = createUserNameText.text.toString()
+
+        AuthService.registerUser(this,eMail,passWord){ registerSuccess ->
+            if(registerSuccess){
+                AuthService.loginUser(this, eMail, passWord){loginSuccess ->
+                    if(loginSuccess){
+                        AuthService.createUser(this, userName, eMail, avatarColor, userAvatar) {
+                            createSuccess -> if (createSuccess){
+                            println(UserDataService.avatarName)
+                            println(UserDataService.avatarColor)
+                            println(UserDataService.name)
+                            finish()
+                            }
+                        }
+                    }
+                }
             }
-
         }
     }
-
 }
